@@ -40,6 +40,9 @@
   position: relative;
   transition: all 0.3s ease;
 }
+.no-events{
+  pointer-events: none;
+}
 .autosolve-crosshair{
   position: absolute;
   top: 0%;

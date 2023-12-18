@@ -21,6 +21,7 @@ const App = () => {
   const [isSuccess,setIsSuccess]=useState(false);
   const [isButtonPressed,setIsButtonPressed]=useState(false);
   const [isCup,setIsCup]=useState(false);
+  const [restart,setRestart]=useState(false);
 
   const [repeat,setRepeat]=useState(false);
 
@@ -44,6 +45,7 @@ const App = () => {
     setIsSuccess(false);
     setIsButtonPressed(false);
     setIsCup(false);
+    setRestart(false);
   }
 
   const handleImageClick = (index) => {
@@ -89,22 +91,16 @@ const App = () => {
   };
   
 
+
   const shoot = (x) => {
     const newAttemptLog = attemptLog.map((log, i) => (i === x ? [...log, true] : [...log, false]));
     if (hidingSpots[x]) {
+      setRestart(true);
       setTimeout(() => {
         setAttemptLog(newAttemptLog);
-
-      
         //target successful
         setIsSuccess(true);
-
-
-
         generate();
-
-
-        
         setAutoSolve(false);
         setAutoSolveDirection(1);
         setAutoSolveIndex(1);
@@ -160,7 +156,7 @@ const App = () => {
       <Background />
       <div className="item">
         {[...Array(n)].map((_, index) => (
-          <div className={`daa-div`} key={index} onClick={() => handleImageClick(index)}>
+          <div className={`daa-div ${restart?'no-events':''}`} key={index} onClick={() => handleImageClick(index)}>
 
             <img src={cup} alt="" />
 
@@ -172,12 +168,22 @@ const App = () => {
         ))}
       </div>
       <div className="buttons">
-        <button onClick={handleAutoSolveClick} className='autosolver'>
-          Auto Solve
-        </button>
-        <button className='autosolver' onClick={resetbutton}>
-          Reset
-        </button>
+        {restart ?(
+          <>
+          <button onClick={resetbutton} className='autosolver'>
+            Retry
+          </button>
+          </>
+        ):(
+          <>
+            <button onClick={handleAutoSolveClick} className='autosolver'>
+              Auto Solve
+            </button>
+            <button className='autosolver' onClick={resetbutton}>
+              Reset
+            </button>
+          </>
+        )}
       </div>
       <Table />
       <Success isSuccess={isSuccess} isButtonPressed={isButtonPressed} isCup={isCup}/>
