@@ -95,11 +95,11 @@ const App = () => {
   const shoot = (x) => {
     const newAttemptLog = attemptLog.map((log, i) => (i === x ? [...log, true] : [...log, false]));
     if (hidingSpots[x]) {
-      setRestart(true);
       setTimeout(() => {
         setAttemptLog(newAttemptLog);
         //target successful
         setIsSuccess(true);
+        setRestart(true);
         generate();
         setAutoSolve(false);
         setAutoSolveDirection(1);
@@ -168,7 +168,7 @@ const App = () => {
         ))}
       </div>
       <div className="buttons">
-        {restart ?(
+        {restart?(
           <>
           <button onClick={resetbutton} className='autosolver'>
             Retry
