@@ -3,7 +3,12 @@ const Table = ()=>{
     return(
         <>
         <div className="table">
-            <img src={table} alt="" />
+            <div className='table-helper'>   
+                <img src={table} alt="" />
+                <div className="table-abs">
+                    DAA GAME
+                </div>
+            </div>
         </div>
         </>
     )

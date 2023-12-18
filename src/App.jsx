@@ -7,7 +7,7 @@ import cross from './assets/daacross.webp';
 import './App.css';
 
 const n = 7; 
-const autoSolveDelay = 250;
+const autoSolveDelay = 700;
 
 const App = () => {
   
@@ -19,8 +19,8 @@ const App = () => {
   const [autoSolveDirection, setAutoSolveDirection] = useState(1);
 
   const [isSuccess,setIsSuccess]=useState(false);
-
   const [isButtonPressed,setIsButtonPressed]=useState(false);
+  const [isCup,setIsCup]=useState(false);
 
   const [repeat,setRepeat]=useState(false);
 
@@ -34,12 +34,23 @@ const App = () => {
   };
 
   
-  
+  const resetbutton=()=>{
+    setAutoSolve(false);
+    setAutoSolveDirection(1);
+    setAutoSolveIndex(1);
+    setAttemptLog(Array.from({ length: n }, () => []))
+    setTarget(Math.floor(Math.random() * n));
+    setHidingSpots(new Array(n).fill(false))
+    setIsSuccess(false);
+    setIsButtonPressed(false);
+    setIsCup(false);
+  }
 
   const handleImageClick = (index) => {
     if (autoSolve) {
       alert('AUTO SOLVER is active. Please wait for it to finish.');
     } else {
+      setIsCup(true);
       shoot(index);
     }
   };
@@ -85,7 +96,7 @@ const App = () => {
         setAttemptLog(newAttemptLog);
 
       
-
+        //target successful
         setIsSuccess(true);
 
 
@@ -160,11 +171,16 @@ const App = () => {
           </div>
         ))}
       </div>
-      <button onClick={handleAutoSolveClick} className='autosolver'>
+      <div className="buttons">
+        <button onClick={handleAutoSolveClick} className='autosolver'>
           Auto Solve
-      </button>
+        </button>
+        <button className='autosolver' onClick={resetbutton}>
+          Reset
+        </button>
+      </div>
       <Table />
-      <Success isSuccess={isSuccess} isButtonPressed={isButtonPressed}/>
+      <Success isSuccess={isSuccess} isButtonPressed={isButtonPressed} isCup={isCup}/>
     </>
 
   );

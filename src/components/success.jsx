@@ -1,10 +1,10 @@
-const Success =({isSuccess,isButtonPressed})=>{
+const Success =({isSuccess,isButtonPressed,isCup})=>{
     return(
         <>
         <div className="success">
 
             {
-                isButtonPressed?(
+                isButtonPressed || isCup?(
                     <>
                         {isSuccess?(
                             <>
