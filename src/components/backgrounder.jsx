@@ -1,4 +1,4 @@
-import bg from '../assets/daa.jpg'
+import bg from '../assets/daa.webp'
 const Background = ()=>{
     return(
         <>

@@ -1,4 +1,4 @@
-import table from '../assets/daatable.png'
+import table from '../assets/daatable.webp'
 const Table = ()=>{
     return(
         <>

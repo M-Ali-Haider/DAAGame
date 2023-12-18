@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Background from './components/backgrounder';
 import Success from './components/success';
 import Table from './components/table'
-import cup from './assets/daacup.png';
-import cross from './assets/daacross.png';
+import cup from './assets/daacup.webp';
+import cross from './assets/daacross.webp';
 import './App.css';
 
 const n = 7; 
