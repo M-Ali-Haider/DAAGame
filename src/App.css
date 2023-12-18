@@ -135,6 +135,10 @@
     gap: 5px;
     flex-wrap: wrap;
   }
+  .item img{
+    height: 80px;
+    width: 80px;
+  }
   .autosolver{
     padding: 20px;
     font-size: 14px;
