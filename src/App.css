@@ -38,7 +38,10 @@
 }
 .daa-div{
   position: relative;
-  transition: all 0.3s ease;
+  transition: all 1s ease;
+}
+.daa-div:active{
+  transform: translateY(-50%);
 }
 .no-events{
   pointer-events: none;
@@ -157,5 +160,8 @@
     background-color: black;
     color: white;
     text-align: center;
+  }
+  .daa-div:active{
+    transform: translateY(-50%);
   }
 }
