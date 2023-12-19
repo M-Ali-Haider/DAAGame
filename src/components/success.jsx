@@ -18,6 +18,7 @@ const Success =({isSuccess,isButtonPressed,isCup})=>{
                     </>
                 ):(
                     <>
+                    GUESS THE CORRECT CUP!
                     </>
                 )
             }
